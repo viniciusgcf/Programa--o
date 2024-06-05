@@ -66,6 +66,10 @@ public class Imobiliaria {
         int numeroquartos = leia.nextInt();
         System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
         int tipo = leia.nextInt();
+        while (tipo > 1) {
+            System.out.println("Opção invalida, digite novamente: ");
+            tipo = leia.nextInt();
+        }
         System.out.println("Digite o preço da residencia: ");
         float preco = leia.nextFloat();
         Imovel residencia = new Imovel(cidade, bairro, codigo, areaconstruida, areatotal, numeroquartos,
@@ -145,6 +149,10 @@ public class Imobiliaria {
             residencia.setNumeroquartos(Nnumeroquartos);
             System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
             int Ntipo = leia.nextInt();
+            while (Ntipo > 1) {
+                System.out.println("Opção invalida, digite novamente: ");
+                Ntipo = leia.nextInt();
+            }
             residencia.setTipo(Ntipo);
             System.out.println("Digite o preço da residencia: ");
             float Npreco = leia.nextFloat();
