@@ -67,8 +67,10 @@ public class Imovel extends Endereco {
 
     @Override
     public String toString() {
-        return super.toString() + ", codigo=" + codigo + ", area construida=" + areaconstruida + ", area total="
-                + areatotal + ", numero de quartos=" + numeroquartos + ", tipo=" + tipo + ", preço=" + preco + "]";
+        return super.toString() + " | codigo = " + codigo + " | area construida = " + areaconstruida
+                + " | area total = "
+                + areatotal + " | numero de quartos = " + numeroquartos + " | tipo = " + tipo + " | preço = " + preco
+                + "]";
     }
 
 }
