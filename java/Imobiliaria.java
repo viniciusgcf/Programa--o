@@ -41,6 +41,9 @@ public class Imobiliaria {
                     excluir();
                     break;
                 }
+                case 0 -> {
+                    break;
+                }
                 default -> {
                     regular(opcao, 5);
                     break;
