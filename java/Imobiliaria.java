@@ -104,7 +104,10 @@ public class Imobiliaria {
                 break;
             }
             case 2 -> {
-
+                System.out.println("Cidades disponiveis: ");
+                for (Imovel residencia : imovel) {
+                    System.out.println(residencia.getCidade());
+                }
                 break;
             }
             case 3 -> {
