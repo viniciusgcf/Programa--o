@@ -42,8 +42,7 @@ public class Imobiliaria {
                     break;
                 }
                 default -> {
-                    System.out.println("Opção invalida, digite novamente: ");
-                    opcao = leia.nextInt();
+                    regular(opcao, 5);
                     break;
                 }
             }
@@ -66,10 +65,7 @@ public class Imobiliaria {
         int numeroquartos = leia.nextInt();
         System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
         int tipo = leia.nextInt();
-        while (tipo > 1) {
-            System.out.println("Opção invalida, digite novamente: ");
-            tipo = leia.nextInt();
-        }
+        regular(tipo, 1);
         System.out.println("Digite o preço da residencia: ");
         float preco = leia.nextFloat();
         Imovel residencia = new Imovel(cidade, bairro, codigo, areaconstruida, areatotal, numeroquartos,
@@ -113,8 +109,7 @@ public class Imobiliaria {
                 break;
             }
             default -> {
-                System.out.println("Opção inválida, digite novamente: ");
-                opcao = leia.nextInt();
+                regular(opcao, 4);
                 break;
             }
         }
@@ -149,10 +144,7 @@ public class Imobiliaria {
             residencia.setNumeroquartos(Nnumeroquartos);
             System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
             int Ntipo = leia.nextInt();
-            while (Ntipo > 1) {
-                System.out.println("Opção invalida, digite novamente: ");
-                Ntipo = leia.nextInt();
-            }
+            regular(Ntipo, 1);
             residencia.setTipo(Ntipo);
             System.out.println("Digite o preço da residencia: ");
             float Npreco = leia.nextFloat();
@@ -165,5 +157,13 @@ public class Imobiliaria {
         int codigo = leia.nextInt();
 
         imovel.removeIf(imoveis -> imoveis.getCodigo() == codigo);
+    }
+
+    public int regular(int a, int b) {
+        while (a > b) {
+            System.out.println("Opção invalida, digite novamente: ");
+            a = leia.nextInt();
+        }
+        return a;
     }
 }
