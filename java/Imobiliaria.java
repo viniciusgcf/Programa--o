@@ -65,7 +65,7 @@ public class Imobiliaria {
         int numeroquartos = leia.nextInt();
         System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
         int tipo = leia.nextInt();
-        regular(tipo, 1);
+        tipo = regular(tipo, 1);
         System.out.println("Digite o preço da residencia: ");
         float preco = leia.nextFloat();
         Imovel residencia = new Imovel(cidade, bairro, codigo, areaconstruida, areatotal, numeroquartos,
@@ -93,7 +93,14 @@ public class Imobiliaria {
         opcao = leia.nextInt();
         switch (opcao) {
             case 1 -> {
-
+                System.out.println("Digite 0 para listar casas e 1 para apartamentos: ");
+                int otipo = leia.nextInt();
+                otipo = regular(otipo, 1);
+                for (Imovel residencia : imovel) {
+                    if (otipo == residencia.getTipo()) {
+                        System.out.println(residencia);
+                    }
+                }
                 break;
             }
             case 2 -> {
@@ -105,11 +112,19 @@ public class Imobiliaria {
                 break;
             }
             case 4 -> {
-
+                System.out.println("Digite o preço minimo que deseja pesquisar: ");
+                int min = leia.nextInt();
+                System.out.println("Digite o preço maximo: ");
+                int max = leia.nextInt();
+                for (Imovel residencia : imovel) {
+                    if (residencia.getPreco() < max && residencia.getPreco() > min) {
+                        System.out.println(residencia);
+                    }
+                }
                 break;
             }
             default -> {
-                regular(opcao, 4);
+                opcao = regular(opcao, 4);
                 break;
             }
         }
@@ -122,33 +137,33 @@ public class Imobiliaria {
         for (Imovel residencia : imovel) {
             if (codigo == residencia.getCodigo()) {
 
+                leia.nextLine();
+                System.out.println("Digite o bairro onde a residência esta localizada: ");
+                String Nbairro = leia.nextLine();
+                residencia.setBairro(Nbairro);
+                System.out.println("Digite a cidade onde a residência esta localizada: ");
+                String Ncidade = leia.nextLine();
+                residencia.setCidade(Ncidade);
+                System.out.println("Digite o código da residencia: ");
+                int Ncodigo = leia.nextInt();
+                residencia.setCodigo(Ncodigo);
+                System.out.println("Digite a área construida no lote: ");
+                float Nareaconstruida = leia.nextFloat();
+                residencia.setAreaconstruida(Nareaconstruida);
+                System.out.println("Digite a área total do lote: ");
+                float Nareatotal = leia.nextFloat();
+                residencia.setAreatotal(Nareatotal);
+                System.out.println("Digite o número de quartos: ");
+                int Nnumeroquartos = leia.nextInt();
+                residencia.setNumeroquartos(Nnumeroquartos);
+                System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
+                int Ntipo = leia.nextInt();
+                Ntipo = regular(Ntipo, 1);
+                residencia.setTipo(Ntipo);
+                System.out.println("Digite o preço da residencia: ");
+                float Npreco = leia.nextFloat();
+                residencia.setPreco(Npreco);
             }
-            leia.nextLine();
-            System.out.println("Digite o bairro onde a residência esta localizada: ");
-            String Nbairro = leia.nextLine();
-            residencia.setBairro(Nbairro);
-            System.out.println("Digite a cidade onde a residência esta localizada: ");
-            String Ncidade = leia.nextLine();
-            residencia.setCidade(Ncidade);
-            System.out.println("Digite o código da residencia: ");
-            int Ncodigo = leia.nextInt();
-            residencia.setCodigo(Ncodigo);
-            System.out.println("Digite a área construida no lote: ");
-            float Nareaconstruida = leia.nextFloat();
-            residencia.setAreaconstruida(Nareaconstruida);
-            System.out.println("Digite a área total do lote: ");
-            float Nareatotal = leia.nextFloat();
-            residencia.setAreatotal(Nareatotal);
-            System.out.println("Digite o número de quartos: ");
-            int Nnumeroquartos = leia.nextInt();
-            residencia.setNumeroquartos(Nnumeroquartos);
-            System.out.println("Digite o tipo de residencia, 0 para casa e 1 para apartamento: ");
-            int Ntipo = leia.nextInt();
-            regular(Ntipo, 1);
-            residencia.setTipo(Ntipo);
-            System.out.println("Digite o preço da residencia: ");
-            float Npreco = leia.nextFloat();
-            residencia.setPreco(Npreco);
         }
     }
 
