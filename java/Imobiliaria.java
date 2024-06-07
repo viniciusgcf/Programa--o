@@ -44,6 +44,17 @@ public class Imobiliaria {
                 case 0 -> {
                     break;
                 }
+                case 9 -> {
+                    Imovel teste1 = new Imovel("Ararangua", "Mato Alto", 1, 1, 1, 1, 1, 1);
+                    imovel.add(teste1);
+                    Imovel teste2 = new Imovel("Ararangua", "Mato Alto", 2, 2, 2, 2, 2, 2);
+                    imovel.add(teste2);
+                    Imovel teste3 = new Imovel("Criciuma", "Balo", 1, 1, 1, 1, 1, 1);
+                    imovel.add(teste3);
+                    Imovel teste4 = new Imovel("Criciuma", "Jale", 2, 2, 2, 2, 2, 2);
+                    imovel.add(teste4);
+                    break;
+                }
                 default -> {
                     regular(opcao, 5);
                     break;
@@ -107,10 +118,8 @@ public class Imobiliaria {
                 break;
             }
             case 2 -> {
-                System.out.println("Cidades disponiveis: ");
-                for (Imovel residencia : imovel) {
-                    System.out.println(residencia.getCidade());
-                }
+                set<String> cidadesUnicas = new HashSet<>();
+                    
                 break;
             }
             case 3 -> {
