@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
 
 public class Imobiliaria {
     ArrayList<Imovel> imovel = new ArrayList<>();
@@ -120,14 +121,16 @@ public class Imobiliaria {
                 break;
             }
             case 2 -> {
-                Set<String> cidadesUnicas = new HashSet<>();
+                List<String> cidadesR = new ArrayList<>();
                 for (Imovel residencia : imovel) {
-                    cidadesUnicas.add(residencia.getCidade());
+                    cidadesR.add(residencia.getCidade());
                 }
-                System.out.println("Cidades disponiveis: ");
-                for (String string : cidadesUnicas) {
-                    System.out.println(cidadesUnicas);
+                System.out.println("Cidades disponiveis, digite o nome de qual deseja pesquisar");
+                Set<String> cidadesU = new HashSet<>(cidadesR);
+                for (String cidade : cidadesU) {
+                    System.out.println(cidade);
                 }
+
                 break;
             }
             case 3 -> {
