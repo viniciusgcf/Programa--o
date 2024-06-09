@@ -132,11 +132,10 @@ public class Imobiliaria {
                 }
                 String cidadeT = leia.nextLine();
                 for (Imovel residencia : imovel) {
-                    if (cidadeT.equals(residencia.getCidade())) {
+                    if (cidadeT == residencia.getCidade()) {
                         System.out.println(residencia);
                     }
                 }
-
                 break;
             }
             case 3 -> {
