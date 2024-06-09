@@ -48,9 +48,9 @@ public class Imobiliaria {
                     break;
                 }
                 case 9 -> {
-                    Imovel teste1 = new Imovel("Ararangua", "Mato Alto", 1, 1, 1, 1, 1, 1);
+                    Imovel teste1 = new Imovel("a", "Mato Alto", 1, 1, 1, 1, 1, 1);
                     imovel.add(teste1);
-                    Imovel teste2 = new Imovel("Ararangua", "Mato Alto", 2, 2, 2, 2, 2, 2);
+                    Imovel teste2 = new Imovel("a", "Mato Alto", 2, 2, 2, 2, 2, 2);
                     imovel.add(teste2);
                     Imovel teste3 = new Imovel("Criciuma", "Balo", 1, 1, 1, 1, 1, 1);
                     imovel.add(teste3);
@@ -130,16 +130,32 @@ public class Imobiliaria {
                 for (String cidade : cidadesU) {
                     System.out.println(cidade);
                 }
+                leia.nextLine();
                 String cidadeT = leia.nextLine();
                 for (Imovel residencia : imovel) {
-                    if (cidadeT == residencia.getCidade()) {
+                    if (cidadeT.equals(residencia.getCidade())) {
                         System.out.println(residencia);
                     }
                 }
                 break;
             }
             case 3 -> {
-
+                List<String> bairrosR = new ArrayList<>();
+                for (Imovel residencia : imovel) {
+                    bairrosR.add(residencia.getBairro());
+                }
+                System.out.println("Bairros disponiveis, digite o nome de qual deseja pesquisar");
+                Set<String> bairrosU = new HashSet<>(bairrosR);
+                for (String bairro : bairrosU) {
+                    System.out.println(bairro);
+                }
+                leia.nextLine();
+                String bairroT = leia.nextLine();
+                for (Imovel residencia : imovel) {
+                    if (bairroT.equals(residencia.getBairro())) {
+                        System.out.println(residencia);
+                    }
+                }
                 break;
             }
             case 4 -> {
