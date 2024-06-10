@@ -48,13 +48,13 @@ public class Imobiliaria {
                     break;
                 }
                 case 9 -> {
-                    Imovel teste1 = new Imovel("a", "Mato Alto", 1, 1, 1, 1, 1, 1);
+                    Imovel teste1 = new Imovel("Ararangua", "Mato Alto", 123, 80, 100, 3, 1, 500000);
                     imovel.add(teste1);
-                    Imovel teste2 = new Imovel("a", "Mato Alto", 2, 2, 2, 2, 2, 2);
+                    Imovel teste2 = new Imovel("Ararangua", "Mato Alto", 456, 50, 60, 2, 0, 200000);
                     imovel.add(teste2);
-                    Imovel teste3 = new Imovel("Criciuma", "Balo", 1, 1, 1, 1, 1, 1);
+                    Imovel teste3 = new Imovel("Criciuma", "Balo", 789, 35, 45, 1, 0, 350000);
                     imovel.add(teste3);
-                    Imovel teste4 = new Imovel("Criciuma", "Jale", 2, 2, 2, 2, 2, 2);
+                    Imovel teste4 = new Imovel("Criciuma", "Jale", 201, 40, 50, 2, 1, 650000);
                     imovel.add(teste4);
                     break;
                 }
@@ -105,6 +105,7 @@ public class Imobiliaria {
                 2.Por cidade
                 3.Por bairro
                 4.Por faixa de preço
+                5.Por minimo de quartos
                 ============================
                 """);
         opcao = leia.nextInt();
@@ -170,6 +171,16 @@ public class Imobiliaria {
                 }
                 break;
             }
+            case 5 -> {
+                System.out.println("Digite a quantidade minima de quartos que deseja pesquisar: ");
+                int min = leia.nextInt();
+                for (Imovel residencia : imovel) {
+                    if (residencia.getNumeroquartos() >= min) {
+                        System.out.println(residencia);
+                    }
+                }
+            }
+
             default -> {
                 opcao = regular(opcao, 4);
                 break;
