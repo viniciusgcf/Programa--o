@@ -1,3 +1,5 @@
+package trabalho;
+
 public class Imovel extends Endereco {
     private int codigo;
     private float areaconstruida;
