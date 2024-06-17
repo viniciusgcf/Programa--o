@@ -9,6 +9,6 @@
     "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.media.jar",
     "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.base.jar"
   ],
-  "java.project.sourcePaths": ["multimidias/src"],
+  "java.project.sourcePaths": ["multimidias/src", "java"],
   "java.format.settings.url": ".vscode/java-formatter.xml"
 }

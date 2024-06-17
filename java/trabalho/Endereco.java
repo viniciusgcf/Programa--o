@@ -1,3 +1,5 @@
+package trabalho;
+
 public class Endereco {
     private String cidade;
     private String bairro;
