@@ -23,7 +23,7 @@ public class Main extends Application {
         text.setX(50);
         text.setY(50);
 
-        stage.setFullScreen(false);
+        stage.setFullScreen(true);
         stage.setTitle("Trabalho de Multimídias");
         stage.setScene(scene);
         stage.show();
