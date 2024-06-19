@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,6 +23,9 @@ public class Main extends Application {
         text.setText("Bem vindo ao aplicativo de vídeo aulas, selecione a aula que deseja realizar: ");
         text.setX(50);
         text.setY(50);
+        text.setFont(Font.font("DejaVu Sans Mono", 20));
+        text.setFill(Color.GREENYELLOW);
+        root.getChildren().add(text);
 
         stage.setFullScreen(true);
         stage.setTitle("Trabalho de Multimídias");
