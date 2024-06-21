@@ -6,14 +6,6 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Main",
-      "request": "launch",
-      "mainClass": "multimidias.Main",
-      "projectName": "Programas_24974a69",
-      "vmArgs": "--module-path /home/user/Documentos/Programas/java/multimidias/lib --add-modules javafx.fxml"
-    },
-    {
-      "type": "java",
       "name": "Interface1",
       "request": "launch",
       "mainClass": "java.Atividade.Interface1",
