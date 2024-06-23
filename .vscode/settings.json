@@ -1,13 +1,7 @@
 {
+  "java.format.settings.url": ".vscode/java-formatter.xml",
   "java.project.referencedLibraries": [
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.swing.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.web.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.fxml.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.graphics.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.controls.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx-swt.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.media.jar",
-    "/home/user/Documentos/javafx-sdk-22.0.1/lib/javafx.base.jar",
+    "lib/**/*.jar",
     "java/multimidias/lib/javafx.base.jar",
     "java/multimidias/lib/javafx.controls.jar",
     "java/multimidias/lib/javafx.fxml.jar",
@@ -16,7 +10,5 @@
     "java/multimidias/lib/javafx.swing.jar",
     "java/multimidias/lib/javafx.web.jar",
     "java/multimidias/lib/javafx-swt.jar"
-  ],
-  "java.project.sourcePaths": ["multimidias/src", "java"],
-  "java.format.settings.url": ".vscode/java-formatter.xml"
+  ]
 }
