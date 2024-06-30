@@ -1,6 +1,8 @@
 package multimidias;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -9,7 +11,11 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage arg0) throws Exception {
-        throw new UnsupportedOperationException("Unimplemented method 'start'");
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("TEste!!");
+        StackPane root = new StackPane();
+        primaryStage.setScene(new Scene(root, 300, 300));
+        primaryStage.show();
     }
+
 }
