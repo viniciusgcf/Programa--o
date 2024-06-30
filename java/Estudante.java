@@ -39,7 +39,7 @@ public class Estudante extends Pessoa {
     }
 
     public String getEstudanteCSV() {
-        return String.join(";", getNome(), getCpf(), getMatricula(), Double.toString(nota1), Double.toString(nota2));
+        return String.join(";", getNome(), getCpf(), getMatricula(), Float.toString(nota1), Float.toString(nota2));
     }
 
     public void setEstudanteCSV(String linha) {
@@ -47,9 +47,11 @@ public class Estudante extends Pessoa {
         if (Linha.length == 5) {
             setNome(Linha[0]);
             setCpf(Linha[1]);
-            setMatricula(Linha[2]);
-            Linha[3] = Double.toString(nota1);
-            Linha[4] = Double.toString(nota2);
+            matricula = Linha[2];
+            Linha[3] = Float.toString(nota1);
+            Linha[4] = Float.toString(nota2);
+        } else {
+            throw new IllegalArgumentException("Formato inválido para linha CSV de estudante.");
         }
     }
 

@@ -8,6 +8,13 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "Main",
+      "projectName": "Programas_b7ff4ba5"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "multimidias.Main",
       "projectName": "Programas_b7ff4ba5"
     },
