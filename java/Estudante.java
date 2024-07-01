@@ -34,8 +34,8 @@ public class Estudante extends Pessoa {
         return nota2;
     }
 
-    public float getMedia() {
-        return (this.nota1 + this.nota2) / 2;
+    public double getMedia() {
+        return (nota1 + nota2) / 2.0;
     }
 
     public String getEstudanteCSV() {
@@ -48,8 +48,8 @@ public class Estudante extends Pessoa {
             setNome(Linha[0]);
             setCpf(Linha[1]);
             matricula = Linha[2];
-            Linha[3] = Float.toString(nota1);
-            Linha[4] = Float.toString(nota2);
+            nota1 = Float.parseFloat(Linha[3]);
+            nota2 = Float.parseFloat(Linha[4]);
         } else {
             throw new IllegalArgumentException("Formato inválido para linha CSV de estudante.");
         }

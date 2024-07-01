@@ -19,6 +19,7 @@ public class Disciplina {
             System.out.println("-------------------------");
             System.out.println("| Nome = " + estudante.getNome());
             System.out.println("| CPF = " + estudante.getCpf());
+            System.out.println("| Matricula = " + estudante.getMatricula());
             System.out.println("| Nota 1 = " + estudante.getNota1());
             System.out.println("| Nota 2 = " + estudante.getNota2());
             System.out.println("| Média = " + estudante.getMedia());
@@ -26,12 +27,12 @@ public class Disciplina {
         }
     }
 
-    public float mediaTurma() {
-        float mediaTurma = 0;
+    public void mediaTurma() {
+        double mediaTurma = 0;
         for (Estudante estudante : turma) {
             mediaTurma += estudante.getMedia();
         }
-        return mediaTurma / turma.size();
+        System.out.println("A média da turma é: " + mediaTurma / turma.size());
     }
 
     Scanner leia = new Scanner(System.in);
@@ -53,6 +54,7 @@ public class Disciplina {
     }
 
     public void alteraEstudante() {
+        leia.nextLine();
         System.out.println("Digite a matricula do aluno que deseja modificar: ");
         String matricula1 = leia.nextLine();
         for (Estudante estudante : turma) {
@@ -80,9 +82,28 @@ public class Disciplina {
     }
 
     public void removeEstudante() {
+        leia.nextLine();
         System.out.println("Digite o numero de matricula do estudante que deseja remover: ");
         String matricula1 = leia.nextLine();
         turma.removeIf(estudante -> estudante.getMatricula().equals(matricula1));
+    }
+
+    public void getEstudante() {
+        leia.nextLine();
+        System.out.println("Digite o numero da matricula do estudante que deseja procurar: ");
+        String matricula1 = leia.nextLine();
+        for (Estudante estudante : turma) {
+            if (matricula1.equals(estudante.getMatricula())) {
+                System.out.println("-------------------------");
+                System.out.println("| Nome = " + estudante.getNome());
+                System.out.println("| CPF = " + estudante.getCpf());
+                System.out.println("| Matricula = " + estudante.getMatricula());
+                System.out.println("| Nota 1 = " + estudante.getNota1());
+                System.out.println("| Nota 2 = " + estudante.getNota2());
+                System.out.println("| Média = " + estudante.getMedia());
+                System.out.println("-------------------------");
+            }
+        }
     }
 
     public void listarEstudantesAcima6() {
@@ -160,15 +181,18 @@ public class Disciplina {
             switch (opcao) {
                 case 1:
                     insereEstudante();
+                    gravaArquivo();
                     break;
                 case 2:
                     removeEstudante();
+                    gravaArquivo();
                     break;
                 case 3:
                     alteraEstudante();
+                    gravaArquivo();
                     break;
                 case 4:
-
+                    getEstudante();
                     break;
                 case 5:
                     listarEstudantes();
@@ -183,7 +207,6 @@ public class Disciplina {
                     mediaTurma();
                     break;
                 case 0:
-                    gravaArquivo();
                     break;
                 default:
                     System.out.println("opção inválida, digite novamente.");
