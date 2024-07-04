@@ -13,7 +13,6 @@ public class Disciplina {
         return turma;
     }
 
-
     public void listarEstudantes() {
         for (Estudante estudante : turma) {
             System.out.println("-------------------------");
@@ -85,7 +84,7 @@ public class Disciplina {
         leia.nextLine();
         System.out.println("Digite o numero de matricula do estudante que deseja remover: ");
         String matricula1 = leia.nextLine();
-        turma.removeIf(estudante -> estudante.getMatricula().equals(matricula1));
+        turma.removeIf(turma -> turma.getMatricula() == matricula1);
     }
 
     public void getEstudante() {
