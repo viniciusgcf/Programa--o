@@ -7,13 +7,13 @@
     <title>Laravel ACL</title>
 </head>
 <body>
-<h2>Laravel ACL</h2>
-<a href="">Create User</a>
-<a href="">Create Post</a>
-<ul>
-@foreach ($users as $user)
-<li>{{$user->name}}</li>
-@endforeach
-</ul>
+    <h2>Laravel ACL</h2>
+        @can('create_user')
+            <a href="">Create User</a>
+        @endcan
+    <ul> @foreach ($users as $user)
+    <li>{{$user->name}}</li>
+    @endforeach
+    </ul>
 </body>
 </html>
