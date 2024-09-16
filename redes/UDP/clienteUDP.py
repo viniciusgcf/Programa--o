@@ -9,9 +9,19 @@ socketUDP.sendto(str.encode("Minha mensagem"),("127.0.0.1",2023))
 #lendo respostas do servidor
 resposta = socketUDP.recvfrom(1024)
 
-#imprimindo mensagem do servidor na tela
 while True:
-    msg = "mensagem do servidor {}".format(resposta[0])
-    print(msg)
-    if not (msg != "00"):
+    print("pinto")
+    pinto=input()
+    socketUDP.sendto(str.encode(pinto),"127.0.0.1",2023)
+    if not (pinto != "00"):
         break
+    
+#imprimindo mensagem do servidor na tela
+# printado = ""
+# i = 0
+# while (printado != "00"):
+#     resposta = socketUDP.recvfrom(1024)
+#     msg = "mensagem do servidor {}".format(resposta[0])
+#     if (printado != msg):
+#         print(msg)
+#         printado = msg
