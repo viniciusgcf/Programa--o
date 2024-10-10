@@ -9,13 +9,15 @@
 <body>
     <h2>Viagens</h2>
 
+    <a href="{{ route('home') }}">Home</a>
+
     @can('create_user')
     <a href="">Criar usuario</a>
     @endcan
 
-    {{-- @can('create_post')
-    <a href="">Criar usuario</a>
-    @endcan --}}
+    @can('create_post')
+    <a href="">Criar post</a>
+    @endcan
 
     <hr>
 

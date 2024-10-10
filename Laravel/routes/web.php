@@ -14,12 +14,12 @@ Route::get('/', function () {
     return view('welcome', ['users' => $users]);
 });
 
-Route::get('/login', function () {
+// Route::get('/login', function () {
 
-    var_dump('login view');
-})->middleware('can:login_page');
+//     var_dump('login view');
+// })->middleware('can:login_page');
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/master', [HomeController::class, 'index'])->name('home');
 
 Route::controller(LoginController::class)->group(function () {
     Route::get('/login', 'index')->name('login.index');
