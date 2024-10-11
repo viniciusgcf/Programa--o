@@ -9,7 +9,7 @@
 <body>
     <h2>Viagens</h2>
 
-    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('login.index') }}">Login</a>
 
     @can('create_user')
     <a href="">Criar usuario</a>

@@ -28,15 +28,16 @@ class LoginController extends Controller
 
         $user = User::where('email', $request->input('email'))->first();
 
-        if (! $user) {
+        $user->password = bcrypt($request->input('password'));
+
+
+        if (! $user || ! password_verify($request->input('password'), $user->password)) {
             return redirect()->route('login.index')->withErrors(['error' => 'Email ou senha inválidos']);
         }
 
-        if (! password_verify($request->input('password'), $user->password)) {
-            return redirect()->route('login.index')->withErrors(['error' => 'Email ou senha inválidos']);
-        }
+        Auth::loginUsingId($user->id);
 
-        return redirect()->route('login.index')->with('success', 'Logged in');
+        return redirect()->route('login.index')->with('success');
 
         // $credentials = $request->only('email', 'password');
         // $authenticated = Auth::attempt($credentials);

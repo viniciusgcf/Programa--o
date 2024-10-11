@@ -1,17 +1,14 @@
-@extends('master')
-
-@section('content')
 
     <a href="{{ route('home') }}">Home</a>
 
-    <h2>Home</h2>
+    <h2>Login</h2>
 
     @if (session()->has('success'))
         {{ session()->get('success') }}
     @endif
 
     @if (auth()->check())
-    Already logged in as {{ auth()->user()->name}}  | <a href="{{ route('login.destroy')}}">Logout</a>
+    Logged in as {{ auth()->user()->name}}  | <a href="{{ route('login.destroy')}}">Logout</a>
     @else
 
     @error('error')
@@ -33,4 +30,3 @@
 
     @endif
 
-@endsection
