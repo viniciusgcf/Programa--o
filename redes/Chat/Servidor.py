@@ -23,8 +23,8 @@ def main():
     while True:
         client_socket, client_address = server_socket.accept()
         print(f"Conexão aceita de {client_address}")
-        client_handler = threading.Thread(target=handle_client, args=(client_socket))
+        client_handler = threading.Thread(target=handle_client, args=(client_socket,))
         client_handler.start()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
