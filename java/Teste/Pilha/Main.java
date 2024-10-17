@@ -13,6 +13,6 @@ public class Main {
             System.out.println("Desempilhei " + elemento);
         }
 
-        int e = p.pop();
+        // int e = p.pop();
     }
 }
