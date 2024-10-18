@@ -5,13 +5,11 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
-Auth::loginUsingId(1);
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/teste', function () {
     var_dump('login view');
-})->middleware('can:login_page');
+})->middleware('can:login_page')->name('teste');
 
 // Route::get('/master', [HomeController::class, 'index'])->name('home');
 
