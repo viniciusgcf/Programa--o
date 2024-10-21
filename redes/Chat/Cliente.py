@@ -13,6 +13,6 @@ def main():
         data = client_socket.recv(1024)
         response = data.decode('utf-8')
         print(f"Mensagem do servidor: {response}")
-
+        
 if __name__ == "__main__":
     main()
