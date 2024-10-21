@@ -1,7 +1,16 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+<body>
     <a href="{{ route('home') }}">Home</a>
-
-    <h2>Login</h2>
+    <a href="{{ route('teste') }}">Teste</a>
 
     @if (session()->has('success'))
         {{ session()->get('success') }}
@@ -15,18 +24,30 @@
         <span>{{ $message }}</span>
     @enderror
 
+<div class="login-box">
+    <div class="login-header">
+        <header>Login</header>
+    </div>
     <form action="{{ route('login.store') }}"method="post">
-        @csrf
-        <input type="text" name="email" value="teste@gmail.com">
-        @error('email')
-            <span>{{$message}}</span>
-        @enderror
-        <input type="password" name="password" value="teste12345">
-        @error('password')
-            <span>{{$message}}</span>
-        @enderror
-        <button type="submit">Login</button>
+    @csrf
+    <input type="text" name="email" class="input-field" autocomplete="off" required>
+    @error('email')
+    <span>{{$message}}</span>
+    @enderror
+    <input type="password" name="password" class="input-field"  autocomplete="off" required>
+    @error('password')
+    <span>{{$message}}</span>
+    @enderror
+    <button type="submit">Login</button>
+    <div class="forgot">
+        <section>
+            <input type="checkbox" id="check">
+            <label for=""></label>
+        </section>
+    </div>
     </form>
+</div>
+@endif
 
-    @endif
-
+</body>
+</html>
