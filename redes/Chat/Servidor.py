@@ -1,13 +1,13 @@
 import socket
 import threading
 
-def handle_client(client_socket):
+def handle_client(client_socket, client_address):
     while True:
         data = client_socket.recv(1024)
         if not data:
             break
         message = data.decode('utf-8')
-        print(f"Mensagem recebida: {message}")
+        print(f"{client_address}: {message}")
         response = "Servidor recebeu sua mensagem: " + message
         client_socket.sendall(response.encode('utf-8'))
     client_socket.close
@@ -23,7 +23,7 @@ def main():
     while True:
         client_socket, client_address = server_socket.accept()
         print(f"Conexão aceita de {client_address}")
-        client_handler = threading.Thread(target=handle_client, args=(client_socket,))
+        client_handler = threading.Thread(target=handle_client, args=(client_socket, client_address))
         client_handler.start()
 
 if __name__ == "__main__":
