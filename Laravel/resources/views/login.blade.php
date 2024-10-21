@@ -39,13 +39,17 @@
     <span>{{$message}}</span>
     @enderror
     <button type="submit">Login</button>
+    </form>
     <div class="forgot">
         <section>
             <input type="checkbox" id="check">
-            <label for=""></label>
+            <label for="check">Lembrar</label>
+        </section>
+        <section>
+            <a href="#">Esqueceu a senha?</a>
         </section>
     </div>
-    </form>
+
 </div>
 @endif
 
