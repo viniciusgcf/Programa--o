@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TestaCalculadora",
+      "request": "launch",
+      "mainClass": "TestaCalculadora",
+      "projectName": "Programas_24974a69"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",
