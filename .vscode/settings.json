@@ -9,5 +9,6 @@
     "java/multimidias/lib/javafx.swing.jar",
     "java/multimidias/lib/javafx.web.jar",
     "java/multimidias/lib/javafx-swt.jar"
-  ]
+  ],
+  "css.customData": [".vscode/css_custom_data.json"]
 }
