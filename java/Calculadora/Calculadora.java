@@ -1,94 +1,92 @@
 public class Calculadora {
-    private PilhaGenerica<Float> valores;
+    private PilhaGenerica<Float> numeros;
     private PilhaGenerica<Character> operadores;
 
     public Calculadora() {
-        valores = new PilhaGenerica<Float>();
+        numeros = new PilhaGenerica<Float>();
         operadores = new PilhaGenerica<Character>();
-
     }
 
-    public void imprimePilhaReal() {
-        valores.imprimePilha();
+    public void mostrarPilhaNumeros() {
+        numeros.mostrarPilha();
     }
 
-    public void imprimePilhaOperadores() {
-        operadores.imprimePilha();
+    public void mostrarPilhaOperadores() {
+        operadores.mostrarPilha();
     }
 
-    public void empilhaReal(Float n) {
-        valores.empilha(n);
-        System.out.println("Valor empilhado com sucesso.");
+    public void adicionarNumero(Float aux) {
+        numeros.empilhar(aux);
+        System.out.println("Número adicionado com sucesso.");
     }
 
-    public void empilhaOperador(Character n) {
-        if (operadorValido(n)) {
-            operadores.empilha(n);
-            System.out.println("Operador empilhado com sucesso.");
+    public void adicionarOperador(Character aux) {
+        if (operadorEhValido(aux)) {
+            operadores.empilhar(aux);
+            System.out.println("Operador adicionado com sucesso.");
         } else {
             System.out.println("Operador inválido!");
         }
     }
 
-    public void realizarCalculo() {
-        if (!faltaConteudo()) {
-            float val1 = valores.desempilha();
-            float val2 = valores.desempilha();
+    public void executarCalculo() {
+        if (!pilhasInsuficientes()) {
+            float numero2 = numeros.desempilhar();
+            float numero1 = numeros.desempilhar();
+            Character operador = operadores.desempilhar();
+            float resultado = calcularOperacao(numero1, numero2, operador);
 
-            Character op = operadores.desempilha();
-            float resultado = 0;
-            switch (op) {
-                case '/':
-                    resultado = val1 / val2;
-                    break;
-                case '*':
-                    resultado = val1 * val2;
-                    break;
-                case '+':
-                    resultado = val1 + val2;
-                    break;
-                case '-':
-                    resultado = val1 - val2;
-                    break;
-                default:
-                    break;
-            }
-            System.out.printf("%.2f %c %.2f = %.2f", val1, op, val2, resultado);
-            System.out.println();
-            empilhaReal(resultado);
+            System.out.printf("%.2f %c %.2f = %.2f%n", numero1, operador, numero2, resultado);
+            adicionarNumero(resultado);
         }
     }
 
-    public boolean operadorValido(Character n) {
-        if ((n.equals('/')) || (n.equals('*')) || (n.equals('+')) || (n.equals('-'))) {
+    public boolean operadorEhValido(Character aux) {
+        return "+-*/".indexOf(aux) >= 0;
+    }
+
+    public boolean pilhasInsuficientes() {
+        int quantidadeNumeros = numeros.tamanho();
+
+        if (quantidadeNumeros < 2) {
+            System.out.println("São necessários mais " + (2 - quantidadeNumeros) + " número(s) na pilha.");
+            return true;
+        } else if (operadores.tamanho() < 1) {
+            System.out.println("Não há operadores suficientes. Adicione ao menos 1 operador.");
             return true;
         }
         return false;
     }
 
-    public boolean faltaConteudo() {
-        int qnt = valores.getQnt();
-
-        if (qnt < 2) {
-            System.out.println("Necessário mais " + (2 - qnt) + " número(s) na pilha de reais.");
-            return true;
-        } else if (operadores.getQnt() < 1) {
-            System.out.println("Lista de operadores vazia, adicione ao menos 1 para efetuar o cálculo.");
-            return true;
+    private float calcularOperacao(float numero1, float numero2, Character operador) {
+        switch (operador) {
+            case '/':
+                if (numero2 == 0) {
+                    throw new IllegalArgumentException("Divisão por zero não é permitida.");
+                }
+                return numero1 / numero2;
+            case '*':
+                return numero1 * numero2;
+            case '+':
+                return numero1 + numero2;
+            case '-':
+                return numero1 - numero2;
+            default:
+                System.out.println("Operador desconhecido.");
+                return 0;
         }
-        return false;
     }
 
-    public void teste() {
-        empilhaReal(2.2f);
-        empilhaReal(4.2f);
-        empilhaReal(6.2f);
-        empilhaReal(8.2f);
-        empilhaReal(10.2f);
+    public void carregarTeste() {
+        adicionarNumero(2.2f);
+        adicionarNumero(4.2f);
+        adicionarNumero(6.2f);
+        adicionarNumero(8.2f);
+        adicionarNumero(10.2f);
 
-        empilhaOperador('-');
-        empilhaOperador('*');
-        empilhaOperador('+');
-        empilhaOperador('/');
+        adicionarOperador('-');
+        adicionarOperador('*');
+        adicionarOperador('+');
+        adicionarOperador('/');
     }
 }

@@ -2,69 +2,59 @@ import java.util.Scanner;
 
 public class TestaCalculadora {
     public static void main(String[] args) {
-        Calculadora calc = new Calculadora();
-        Scanner sc = new Scanner(System.in);
-        int menu = -1;
+        Calculadora calculadora = new Calculadora();
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 10;
 
-        while (menu != 0) {
-            System.out.println("========================");
-            System.out.println("Bem vindo a calculadora!");
-            System.out.println();
-            System.out.println("Digite o valor correspondente a opção desejada.");
-            System.out.println("1 - Empilhar operadores");
-            System.out.println("2 - Empilhar valores");
-            System.out.println("3 - Fazer cálculo");
-            System.out.println("4 - Imprimir pilhas");
+        while (opcao != 0) {
+            System.out.println("-------------------------");
+            System.out.println("1 - Adicionar operador");
+            System.out.println("2 - Adicionar valor");
+            System.out.println("3 - Calcular resultado");
+            System.out.println("4 - Exibir pilhas");
             System.out.println("0 - Sair da calculadora.");
-            System.out.println();
+            System.out.println("-------------------------");
 
-            menu = sc.nextInt();
+            opcao = scanner.nextInt();
 
-            switch (menu) {
+            switch (opcao) {
                 case 1:
-                    System.out.println("Digite qual dos operadores válidos você deseja empilhar.");
+                    System.out.println("Digite um dos operadores válidos:");
                     System.out.println("Operadores válidos: +, -, /, *");
-                    sc.nextLine();
-                    String buffer = sc.nextLine();
-                    Character op = buffer.charAt(0);
-
-                    calc.empilhaOperador(op);
+                    scanner.nextLine();
+                    String entradaOperador = scanner.nextLine();
+                    Character operador = entradaOperador.charAt(0);
+                    calculadora.adicionarOperador(operador);
                     break;
                 case 2:
-                    System.out.println("Digite um número real para ser empilhado:");
-                    float val = sc.nextFloat();
-                    calc.empilhaReal(val);
+                    System.out.println("Digite um número real para adicionar:");
+                    float valor = scanner.nextFloat();
+                    calculadora.adicionarNumero(valor);
                     break;
 
                 case 3:
-                    System.out.println("Verificando dados...");
-                    calc.realizarCalculo();
+                    System.out.println("Executando cálculo...");
+                    calculadora.executarCalculo();
                     System.out.println();
                     break;
 
                 case 4:
-                    System.out.println("Imprimindo pilhas...");
-                    calc.imprimePilhaOperadores();
+                    System.out.println("Exibindo pilhas...");
+                    calculadora.mostrarPilhaOperadores();
                     System.out.println();
-                    calc.imprimePilhaReal();
+                    calculadora.mostrarPilhaNumeros();
                     System.out.println();
-
                     break;
-                case 5:
-                    System.out.println("Empilhamento de teste injetado!");
-                    calc.teste();
 
-                    break;
                 case 0:
-                    System.out.println("Saindo...");
-
+                    System.out.println("Saindo da calculadora.");
                     break;
+
                 default:
+                    System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-
         }
-        sc.close();
-
+        scanner.close();
     }
 }
