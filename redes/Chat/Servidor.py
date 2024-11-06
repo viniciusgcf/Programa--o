@@ -1,30 +1,49 @@
 import socket
 import threading
 
-def handle_client(client_socket, client_address):
+host = '127.0.0.1' # localhost
+port = 55555
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((host, port))
+server.listen()
+
+clients = []
+names = []
+
+def broadcast(message):
+    for client in clients:
+        client.send(message)
+
+def handle(client):
     while True:
-        data = client_socket.recv(1024)
-        if not data:
+        try:
+            message = client.recv(1024)
+            broadcast(message)
+        except:
+            index = clients.index(client)
+            clients.remove(client)
+            client.close()
+            name = names[index]
+            broadcast(f'{name} foi desconectado!'.encode('ascii'))
+            names.remove(name)
             break
-        message = data.decode('utf-8')
-        print(f"{client_address}: {message}")
-        response = "Servidor recebeu sua mensagem: " + message
-        client_socket.sendall(response.encode('utf-8'))
-    client_socket.close
 
-def main():
-    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = '127.0.0.1'
-    port = 12345
-    server_socket.bind((host, port))
-    server_socket.listen(5)
-    print(f"Servidor conectado em: {host}, {port}")
-
+def recieve():
     while True:
-        client_socket, client_address = server_socket.accept()
-        print(f"Conexão aceita de {client_address}")
-        client_handler = threading.Thread(target=handle_client, args=(client_socket, client_address))
-        client_handler.start()
+        client, address = server.accept()
+        print(f"Conectado em {str(address)}")
 
-if __name__ == "__main__":
-    main()
+        client.send('NOME'.encode('ascii'))
+        name = client.recv(1024).decode('ascii')
+        names.append(name)
+        clients.append(client)
+
+        print(f'nome do cliente é {name}!')
+        broadcast(f'{name} entrou no chat!'.encode('ascii'))
+        client.send('Conectado ao servidor!'.encode('ascii'))
+
+        thread = threading.Thread(target=handle, args=(client,))
+        thread.start()
+
+recieve()
