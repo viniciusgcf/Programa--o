@@ -26,4 +26,3 @@
     @endforeach</ul>
 </body>
 </html>
-socoro vai se fude
