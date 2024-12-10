@@ -1,95 +1,90 @@
-class ListaEncadeadaGenerica<Item> {
-    Nodo inicio;
+public class ListaEncadeadaGenerica<T> {
+    private Nodo<T> inicio;
 
-    public class Nodo {
-        Item dados;
-        Nodo proximo;
+    public class Nodo<T> {
+        T valor;
+        Nodo<T> proximo;
     }
 
-    void insereInicio(Item n) {
-        Nodo novo = new Nodo();
-        novo.dados = n;
+    public void adicionarInicio(T valor) {
+        Nodo<T> novo = new Nodo<>();
+        novo.valor = valor;
         novo.proximo = inicio;
         inicio = novo;
     }
 
-    Item removeInicio() {
+    public void adicionarFinal(T valor) {
+        Nodo<T> novo = new Nodo<>();
+        novo.valor = valor;
+        novo.proximo = null;
+        if (inicio == null) {
+            inicio = novo;
+        } else {
+            Nodo<T> atual = inicio;
+            while (atual.proximo != null) {
+                atual = atual.proximo;
+            }
+            atual.proximo = novo;
+        }
+    }
+
+    public T removerInicio() {
         if (inicio != null) {
-            Item valor = inicio.dados;
+            T valor = inicio.valor;
             inicio = inicio.proximo;
             return valor;
         }
         return null;
     }
 
-    Item removeMeio(Item n) {
-        Nodo atual = inicio;
-        Nodo anterior = null;
+    public T removerElemento(T valor) {
+        Nodo<T> atual = inicio;
+        Nodo<T> anterior = null;
 
-        while (atual.dados != null && !atual.dados.equals(n)) {
+        while (atual != null && !atual.valor.equals(valor)) {
             anterior = atual;
             atual = atual.proximo;
         }
 
-        if (atual.equals(null)) {
-            return null;
+        if (atual == null) {
+            return null; // Elemento não encontrado
         }
 
-        if (anterior.equals(null)) {
-            return removeInicio();
+        if (anterior == null) {
+            return removerInicio();
         } else {
             anterior.proximo = atual.proximo;
-            Item x = atual.dados;
-            return x;
+            return atual.valor; // Retorna o valor removido
         }
     }
 
-    void inserefinal(Item n) {
-        Nodo novo = new Nodo();
-        novo.dados = n;
-        novo.proximo = null;
-
-        if (inicio == null) {
-            inicio = novo;
-
-        } else {
-            Nodo atual = inicio;
-            while (atual.proximo != null) {
-                atual = atual.proximo;
-            }
-            atual.proximo = novo;
-        }
-
-    }
-
-    Item removeFinal() {
+    public T removerFinal() {
         if (inicio == null) {
             return null;
         }
 
         if (inicio.proximo == null) {
-            Item valor = inicio.dados;
+            T valor = inicio.valor;
             inicio = null;
             return valor;
         }
 
-        Nodo atual = inicio;
+        Nodo<T> atual = inicio;
         while (atual.proximo.proximo != null) {
             atual = atual.proximo;
         }
 
-        Item x = atual.proximo.dados;
+        T valorFinal = atual.proximo.valor;
         atual.proximo = null;
-        return x;
+        return valorFinal;
     }
 
-    void imprimeLista() {
-        Nodo temp = inicio;
-        while (temp != null) {
-            System.out.printf("'" + temp.dados + "'" + " -> ");
-            temp = temp.proximo;
+    public void imprimirLista() {
+        Nodo<T> atual = inicio;
+        while (atual != null) {
+            System.out.print("'" + atual.valor + "' -> ");
+            atual = atual.proximo;
         }
-        System.out.println();
+        System.out.println("null");
     }
-
 }

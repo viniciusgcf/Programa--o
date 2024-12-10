@@ -1,31 +1,33 @@
-class PilhaGenerica<Item> {
-    private ListaEncadeadaGenerica<Item> lis;
-    private int qnt = 0;
+public class PilhaGenerica<T> {
+    private ListaEncadeadaGenerica<T> elementos;
+    private int quantidade = 0;
 
-    PilhaGenerica() {
-        lis = new ListaEncadeadaGenerica<Item>();
+    public PilhaGenerica() {
+        elementos = new ListaEncadeadaGenerica<T>();
     }
 
-    void empilha(Item valor) {
-        lis.inserefinal(valor);
-        qnt++;
+    public void empilhar(T valor) {
+        elementos.adicionarFinal(valor);
+        quantidade++;
     }
 
-    Item desempilha() {
-        qnt--;
-        return lis.removeFinal();
-
+    public T desempilhar() {
+        if (estaVazia()) {
+            throw new IllegalStateException("A pilha está vazia. Não é possível desempilhar.");
+        }
+        quantidade--;
+        return elementos.removerFinal();
     }
 
-    boolean estaVazia() {
-        return lis.inicio == null;
+    public boolean estaVazia() {
+        return quantidade == 0;
     }
 
-    void imprimePilha() {
-        lis.imprimeLista();
+    public void mostrarPilha() {
+        elementos.imprimirLista();
     }
 
-    int getQnt() {
-        return this.qnt;
+    public int tamanho() {
+        return this.quantidade;
     }
 }
