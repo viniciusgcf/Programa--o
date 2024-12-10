@@ -1,6 +1,7 @@
 public class ListaEncadeadaGenerica<T> {
     private Nodo<T> inicio;
 
+    @SuppressWarnings("hiding")
     public class Nodo<T> {
         T valor;
         Nodo<T> proximo;
