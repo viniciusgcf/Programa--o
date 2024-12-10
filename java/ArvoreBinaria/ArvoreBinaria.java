@@ -65,14 +65,31 @@ public class ArvoreBinaria {
         }
     }
 
-    public int tamanho() {
-        return calcularTamanho(raiz);
+    public int tamanhoInicio() {
+        return tamanho(raiz);
     }
 
-    public int calcularTamanho(Nodo raiz) {
+    public int tamanho(Nodo raiz) {
         if (raiz == null) {
             return 0;
         }
-        return 1 + calcularTamanho(raiz.esq) + calcularTamanho(raiz.dir);
+        return 1 + tamanho(raiz.esq) + tamanho(raiz.dir);
+    }
+
+    public Nodo inverteInicio() {
+        return inverte(raiz);
+    }
+
+    public Nodo inverte(Nodo raiz) {
+        if (raiz == null) {
+            return raiz;
+        }
+        Nodo esq = inverte(raiz.esq);
+        Nodo dir = inverte(raiz.dir);
+
+        raiz.dir = esq;
+        raiz.esq = dir;
+
+        return raiz;
     }
 }

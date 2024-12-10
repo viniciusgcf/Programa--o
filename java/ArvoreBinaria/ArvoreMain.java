@@ -21,6 +21,9 @@ public class ArvoreMain {
         System.out.println();
         arvore.posOrdemInicio();
         System.out.println();
-        System.out.println(arvore.tamanho());
+        System.out.println(arvore.tamanhoInicio());
+        System.out.println();
+        arvore.inverteInicio();
+        arvore.emOrdemInicio();
     }
 }
