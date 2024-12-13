@@ -87,11 +87,12 @@ public class ArvoreMain {
                         int id1 = leia.nextInt();
                         System.out.println("Digite o ID da segunda árvore: ");
                         int id2 = leia.nextInt();
-                        if (condition) {
-
+                        if (arvores.get(id1).igual(arvores.get(id1).raiz, arvores.get(id2).raiz)) {
+                            System.out.println("As arvores são iguais.");
+                        } else {
+                            System.out.println("As arvores são diferentes.");
                         }
                     }
-
                     break;
                 case 0:
                     System.out.println("Encerrando o programa...");
