@@ -92,4 +92,14 @@ public class ArvoreBinaria {
 
         return raiz;
     }
+
+    public boolean igual(Nodo a, Nodo b) {
+        if (a == null && b == null) {
+            return true;
+        }
+        if (a == null || b == null) {
+            return false;
+        }
+        return (a.dados == b.dados && igual(a.esq, b.esq) && igual(a.dir, b.dir));
+    }
 }
