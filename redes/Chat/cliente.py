@@ -6,28 +6,31 @@ name = input("Digite seu nome: ")
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 55555))
 
-def receive():
+def recieve():
     while True:
         try:
             message = client.recv(1024).decode('ascii')
             if message == 'NOME':
-                client.send(name.encode('ascii'))  # Envia o nome quando solicitado
+                pass
             else:
                 print(message)
         except:
-            print("Ocorreu um erro!")
+            print("Ocorreu um erro ao receber a mensagem. Conexão encerrada.")
             client.close()
             break
 
-def write():
+def send_messages():
     while True:
-        message = f'{name}: {input("")}'
-        client.send(message.encode('ascii'))
+        try:
+            message = f'{name}: {input("")}'
+            client.send(message.encode('ascii'))
+        except:
+            print("Ocorreu um erro ao enviar a mensagem.")
+            client.close()
+            break
 
-# Thread para receber mensagens
-receive_thread = threading.Thread(target=receive)
-receive_thread.start()
+recieve_thread = threading.Thread(target=recieve)
+recieve_thread.start()
 
-# Thread para enviar mensagens
 write_thread = threading.Thread(target=write)
 write_thread.start()
